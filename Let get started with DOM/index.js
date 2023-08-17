@@ -56,8 +56,8 @@ submit.value = "SEND";
 var item = document.querySelector('.list-group-item');
 item.style.color = 'lightyellow';
 
-var lastitem = document.querySelector('.list-group-item:last-child');
-lastitem.style.color = 'red';
+// var lastitem = document.querySelector('.list-group-item:last-child');
+// lastitem.style.color = 'red';
 
 var seconditem = document.querySelector('.list-group-item:nth-child(3)');
 seconditem.style.color = 'brown';
@@ -70,7 +70,7 @@ var odd = document.querySelectorAll('li:nth-child(odd)');
 var even = document.querySelectorAll('li:nth-child(even)');
 for(var i=0;i<odd.length;i++){
     odd[i].style.backgroundColor = 'lightgrey';
-    even[i].style.backgroundColor = 'white';
+    // even[i].style.backgroundColor = 'white';
 }
 
 // Make the 3 rd element in the list have green background color
@@ -80,3 +80,8 @@ thirdelement[2].style.backgroundColor = 'lightgreen';
 for(var i=0;i<thirdelement.length;i++){
     thirdelement[i].style.fontWeight = 'bold';
 }
+
+// And try editing it with getelementsbyclassname and then by getelementbytagname
+// If we edit particular element by class name it does not effect the new item without class name
+var tagname = document.getElementsByTagName('li');
+tagname[4].style.color = 'yellow';
