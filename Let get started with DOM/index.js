@@ -72,3 +72,11 @@ for(var i=0;i<odd.length;i++){
     odd[i].style.backgroundColor = 'lightgrey';
     even[i].style.backgroundColor = 'white';
 }
+
+// Make the 3 rd element in the list have green background color
+// Make all the elements in the list have bold color font
+var thirdelement = document.getElementsByClassName('list-group-item');
+thirdelement[2].style.backgroundColor = 'lightgreen';
+for(var i=0;i<thirdelement.length;i++){
+    thirdelement[i].style.fontWeight = 'bold';
+}
