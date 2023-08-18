@@ -103,3 +103,39 @@ var oddelementgreen = document.querySelectorAll('.list-group-item:nth-child(odd)
 for(var i=0;i<oddelementgreen.length;i++){
     oddelementgreen[i].style.backgroundColor = 'lightgreen';
 }
+
+// Add an item to the list
+let ul = document.getElementById('items');
+// 1. createElement
+let lia = document.createElement('li');
+// 2 createTextNode
+let text = document.createTextNode('Item 9');
+lia.appendChild(text);
+// 3. appendChild
+ul.appendChild(lia);
+
+// Change Last Item Text
+// 4. lastElementChild
+let lastelementchild = ul.lastElementChild;
+lastelementchild.textContent = 'Watches';
+
+// Add a class to the first item
+let firstelementchild = ul.firstElementChild;
+// 5. setAttribute
+firstelementchild.setAttribute('class','highlight');
+
+// Add an item after the second item
+// 6. nextElementSibling
+let secondItem = firstelementchild.nextElementSibling;
+let newitemaftersecond = document.createElement('li');
+let newtext = document.createTextNode('item after second');
+newitemaftersecond.appendChild(newtext);
+ul.insertBefore(newitemaftersecond,secondItem.nextElementSibling);
+
+// Now go head and add HEllo word before Item Lister
+const headertitle = document.getElementById('header-title');
+headerTitle.textContent = 'Hello ' + headerTitle.textContent;
+
+// Now go head and add HEllo word before Item 1
+const firstlistitem = document.querySelector('#items li'); // this will get the first item in the list
+firstlistitem.textContent = "Hello " + firstlistitem.textContent;
