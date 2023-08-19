@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lets store the users in the right format</title>
+</head>
+<body>
+    <h1>Objects in local storage - javascript - decode</h1>
+
+    <script>
+        let myobj = {
+            name: "Bhuvnesh Jain",
+            age: 22
+        }
+
+        console.log(myobj);
+
+        let myobj_serialized = JSON.stringify(myobj);
+        console.log(myobj_serialized);
+
+        localStorage.setItem('myobj',myobj_serialized);
+
+        let myobj_deserialized = JSON.parse(localStorage.getItem("myobj"));
+        console.log(myobj_deserialized);
+    </script>
+</body>
+</html>
