@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <div class="container mt-5">
+        <h2>Expense Tracker</h2>
+
+        <form action="" id="expense-form">
+            <div class="mb-3">
+                <label for="item" class="form-label">Item</label>
+                <select id="item" class="form-control" required onchange="showDescription(this.value)">
+                    <option value="" disabled selected>Select Item</option>
+                    <option value="movie">Movie</option>
+                    <option value="shopping">Shopping</option>
+                    <option value="travelling">Travelling</option>
+                    <option value="market">Market</option>
+                </select>
+            </div>
+
+            <div class="mb-3 collapse" id="descriptiondiv">
+                <label for="description" class="form-label">Description</label>
+                <input type="text" id="description" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label for="price" class="form-label">Price</label>
+                <input type="number" class="form-control" id="price" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="date" class="form-label">Date</label>
+                <input type="date" id="date" class="form-control" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">ADD</button>
+        </form>
+
+        <ul class="list-group mt-5" id="expense-list"></ul>
+    </div>
+
+    <script src="index.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"></script>
+</body>
+
+</html>
