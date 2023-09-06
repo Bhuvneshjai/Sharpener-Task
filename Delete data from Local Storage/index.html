@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form with Local Storage - Delete Button</title>
+</head>
+<body>
+    <form action="" id="userForm">
+        <label for="name">Name : </label>
+        <input type="text" name="name" id="name" required>
+        <br><br>
+
+        <label for="email">Email : </label>
+        <input type="email" name="email" id="email" required>
+        <br><br>
+
+        <label for="phone">Phone Number : </label>
+        <input type="tel" name="phone" id="phone" required>
+        <br><br>
+
+        <input type="button" name="submit" id="submit" value="Submit" onclick="storeData()">
+    </form>
+
+    <!-- User Details Will Be Append Here -->
+    <ul id="outputList"></ul>
+
+    <script>
+        function storeData(){
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+
+            const userData = {
+                name: name,
+                email: email,
+                phone: phone
+            };
+
+            localStorage.setItem(email, JSON.stringify(userData));
+
+            renderList();
+        }
+
+        function renderList(){
+            const outputList = document.getElementById('outputList');
+            outputList.innerHTML = "";
+
+            for(let i = 0;i < localStorage.length; i++){
+                const email = localStorage.key(i);
+                const userData = JSON.parse(localStorage.getItem(email));
+
+                const item = document.createElement('li');
+                item.innerHTML = `
+                    Name : ${userData.name} <br>
+                    Email : ${userData.email} <br>
+                    Phone : ${userData.phone} <br>
+                    <button onclick = "deleteItem('${email}')">Delete</button>`;
+
+                outputList.appendChild(item);
+            }
+        }
+
+        function deleteItem(email){
+            localStorage.removeItem(email);
+            renderList();
+        }
+
+        // Initial Render
+        window.onload = renderList;
+    </script>
+</body>
+</html>

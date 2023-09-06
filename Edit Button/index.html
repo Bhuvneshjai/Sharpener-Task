@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Button</title>
+</head>
+
+<body>
+
+    <form id="userForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name"><br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email"><br><br>
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone"><br><br>
+        <input type="button" value="Submit" onclick="storeData()">
+        <input type="button" value="Update" id="update" onclick="updateData()" style="display:none;">
+    </form>
+
+    <ul id="outputList"></ul>
+
+    <script>
+        let editingEmail = null;
+
+        function storeData() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+
+            const userData = {
+                name: name,
+                email: email,
+                phone: phone
+            };
+
+            // Check if editing or new submission
+            if (!editingEmail) {
+                localStorage.setItem(email, JSON.stringify(userData));
+            } else {
+                localStorage.setItem(editingEmail, JSON.stringify(userData));
+            }
+            renderList();
+        }
+
+        function renderList() {
+            const outputList = document.getElementById('outputList');
+            outputList.innerHTML = "";
+
+            for (let i = 0; i < localStorage.length; i++) {
+                const email = localStorage.key(i);
+                const userData = JSON.parse(localStorage.getItem(email));
+
+                const item = document.createElement('li');
+                item.innerHTML = `
+                Name: ${userData.name} <br>
+                Email: ${userData.email} <br>
+                Phone: ${userData.phone} <br>
+                <button onclick="editItem('${email}')">Edit</button>
+                <button onclick="deleteItem('${email}')">Delete</button>`;
+                outputList.appendChild(item);
+            }
+        }
+
+        function deleteItem(email) {
+            localStorage.removeItem(email);
+            renderList();
+        }
+
+        function editItem(email) {
+            const userData = JSON.parse(localStorage.getItem(email));
+
+            document.getElementById('name').value = userData.name;
+            document.getElementById('email').value = userData.email;
+            document.getElementById('phone').value = userData.phone;
+
+            editingEmail = email;
+            document.getElementById('update').style.display = 'block';
+        }
+
+        function updateData() {
+            if (editingEmail) {
+                localStorage.removeItem(editingEmail);
+                storeData();
+                editingEmail = null;
+                document.getElementById('update').style.display = 'none';
+            }
+        }
+
+        window.onload = renderList;
+    </script>
+</body>
+
+</html>

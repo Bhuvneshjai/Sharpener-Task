@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form with Local Storage</title>
+</head>
+<body>
+    <form action="" id="userForm">  
+        <label for="name">Name : </label>
+        <input type="text" name="name" id="name" required>
+        <br>
+        <br>
+        <label for="email">Email : </label>
+        <input type="email" name="email" id="email" required>
+        <br>
+        <br>
+        <label for="phone">Phone Number : </label>
+        <input type="tel" name="phone" id="phone" required>
+        <br><br>
+        <input type="button" name="submit" id="submit" value="Submit" onclick="storeData()">
+    </form>
+
+    <div id="output">
+        <p><strong>Name : </strong><span id="outputName"></span></p>
+        <p><strong>Email : </strong> <span id="outputEmail"></span></p>
+        <p><strong>Phone Number : </strong><span id="outputPhoneNumber"></span></p>
+    </div>
+
+    <script>
+        function storeData(){
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+
+            // Display Below Form
+            document.getElementById('outputName').textContent = name;
+            document.getElementById('outputEmail').textContent = email;
+            document.getElementById('outputPhoneNumber').textContent = phone;
+
+            // Store in Local Storage
+            const userData = {
+                name: name,
+                email: email,
+                phone: phone
+            };
+
+            localStorage.setItem(email,JSON.stringify(userData));
+        }
+    </script>
+</body>
+</html>
