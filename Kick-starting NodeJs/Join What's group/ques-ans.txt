@@ -1,0 +1,50 @@
+Ques-1. Explain how does the internet work in your own words.
+-> The internet is like a vast network of connected computers. When you request a website, 
+your device sends a message to a server. The server processes your request, retrieves the webpage's data, 
+and sends it back to your device. This communication happens via a series of interconnected 
+routers and data centers, allowing information to flow globally.
+
+Ques-2. What are the core modules of node js?
+-> Node.js has essential core modules, including:
+    fs (File System): For file operations.
+    http: To create web servers.
+    url: To parse and format URLs.
+    path: For handling file paths.
+    events: To manage event-driven programming.
+    util: Providing utility functions.
+    os: Offering operating system-related information.
+    crypto: For cryptographic operations.
+    stream: Handling streaming data.
+
+Ques-3. Explain the use of each one of them in detail.
+-> fs (File System): Used to read, write, and manipulate files on the server or file system.
+    http: Facilitates creating web servers and handling HTTP requests and responses.
+    url: Allows parsing and formatting URLs for working with web addresses.
+    path: Used for handling file and directory paths, making path-related operations cross-platform.
+    events: Enables event-driven programming with custom event emitters.
+    util: Provides utility functions for debugging and formatting.
+    os: Offers information about the operating system, including CPU and memory.
+    crypto: Supports cryptographic operations like hashing, encryption, and decryption.
+    stream: Handles streaming data, making it efficient for reading and writing large files or data.
+
+Ques-4. What are relative path and absolute path ?
+-> A relative path specifies a file or directory location in relation to the current working directory. 
+    An absolute path provides the full path from the root directory. In Windows, an absolute path starts with
+    a drive letter (e.g., C:) or a network share (e.g., \server\share). In Unix-based systems, an absolute 
+    path starts with a forward slash (/). To define them, you specify the path to a file or directory
+    within the context of your file system.
+
+Ques-5. What does createServer do ?
+-> The createServer function in Node.js is used to create an HTTP server. It takes a callback function 
+    as an argument, which is executed for each incoming HTTP request. This function allows you to define how
+    the server responds to requests, making it a fundamental component for building web applications and APIs.
+
+Ques-6. What are anonymous functions ?
+-> Anonymous functions, often called "unnamed" or "inline" functions, are functions without a specific name. 
+    They are defined on the spot, typically used for short, one-time operations. These functions are 
+    useful when you don't need to reuse the code and can be declared directly where they're needed.
+
+Ques-7. What do you think server.listens exactly do?Why do we need it ?
+-> server.listen in Node.js starts a server to listen for incoming network connections. It binds the server 
+    to a specific port and IP address, waiting for client requests. It's essential to specify where and 
+    how the server should listen, allowing it to handle incoming requests and respond to clients appropriately.
