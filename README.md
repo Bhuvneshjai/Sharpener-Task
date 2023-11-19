@@ -50,3 +50,13 @@ Buffers and streams are concepts in Node.js that are particularly useful for han
 
 ## Streams & Buffer
 * Streams in Node.js allow the efficient processing of data in chunks, ideal for large datasets and real-time scenarios. Buffers handle binary data, offering memory-efficient storage and manipulation, crucial for tasks like file I/O and network operations, enhancing performance and reducing memory consumption.
+
+## npm start and start-server script:
+* "start": "node index.js": Executes your application with Node.js.
+* "start-server": "nodemon index.js": Uses nodemon to run your application and automatically restart it whenever changes are detected.
+
+## Nodemon:
+* Nodemon solves the problem of manual server restarts during development. It watches for file changes and restarts the server automatically, improving the development workflow.
+* --save-dev and --save:
+* --save-dev: Saves packages as development dependencies, used during development but not needed in production.
+* --save: Saves packages as runtime dependencies, required for the application to run.
