@@ -44,3 +44,9 @@ Buffers and streams are concepts in Node.js that are particularly useful for han
 * Streams are great for concurrent processing of data, allowing you to parallelize operations.
 
 ###### In summary, buffers and streams in Node.js provide efficient ways to handle data, especially in scenarios involving large datasets, real-time processing, and efficient use of system resources. They are particularly powerful in scenarios where memory efficiency and performance are critical, such as dealing with files, network operations, or real-time data streams.
+
+## understand event loop
+* In simple terms, it's a core concept in asynchronous programming. The event loop continuously checks for tasks in a queue, executes them one by one, and manages the flow of events in a non-blocking manner, crucial for efficient handling of I/O operations in Node.js.
+
+## Streams & Buffer
+* Streams in Node.js allow the efficient processing of data in chunks, ideal for large datasets and real-time scenarios. Buffers handle binary data, offering memory-efficient storage and manipulation, crucial for tasks like file I/O and network operations, enhancing performance and reducing memory consumption.
