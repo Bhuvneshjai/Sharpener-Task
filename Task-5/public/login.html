@@ -7,27 +7,17 @@
     <title>Login</title>
 </head>
 <body>
-    <form id="loginForm" action="/login" method="post">
+    <form onsubmit="handleLogin(event)" action="/login" method="get">
         <label for="username">Enter your username:</label>
-        <input type="text" id="username" name="username" required>
+        <input id="username" type="text" name="username" required>
         <button type="submit">Login</button>
     </form>
 
     <script>
-        const loginForm = document.getElementById('loginForm');
-
-        loginForm.addEventListener('submit', (event) => {
-            event.preventDefault();
-
+        function handleLogin(event) {
             const usernameInput = document.getElementById('username');
-            const username = usernameInput.value;
-
-            // Store username in local storage
-            localStorage.setItem('username', username);
-
-            // Redirect to the send page
-            window.location.href = '/send';
-        });
+            localStorage.setItem('username', usernameInput.value);
+        }
     </script>
 </body>
 </html>

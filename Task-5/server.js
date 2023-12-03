@@ -1,25 +1,22 @@
+// server.js
 const express = require('express');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const path = require('path');
+
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(express.static('public'));
+const indexRoute = require('./routes/index');
+const messagesRoute = require('./routes/messages');
 
-// In-memory storage for usernames (replace this with a database in a real application)
-let loggedInUsers = {};
-
-// Load routes from the 'routes' directory
-const routes = require('./routes');
-// Pass loggedInUsers to routes
-app.use((req, res, next) => {
-    req.loggedInUsers = loggedInUsers;
-    next();
-});
-app.use('/', routes);
+app.use('/', indexRoute);
+app.use('/messages', messagesRoute);
 
 app.listen(PORT, () => {
-    console.log(`Server is running at http://localhost:${PORT}`);
+    console.log(`Server is running on http://localhost:${PORT}`);
 });

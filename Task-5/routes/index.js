@@ -1,10 +1,21 @@
+// routes/index.js
 const express = require('express');
 const router = express.Router();
+const path = require('path');
 
-const authRoutes = require('./auth');
-const messageRoutes = require('./messages');
+router.get('/login', (req, res) => {
+    const loginPath = path.join(__dirname, '/../public/login.html');
+    res.sendFile(loginPath);
+});
 
-router.use('/login', authRoutes);
-router.use('/send', messageRoutes);
+router.post('/login', (req, res) => {
+    const { username } = req.body;
+    if (username) {
+        res.cookie('username', username);
+        res.redirect('/chat');
+    } else {
+        res.redirect('/login');
+    }
+});
 
 module.exports = router;
