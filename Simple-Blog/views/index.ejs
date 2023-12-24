@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Blog</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+
+    <style>
+        body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1em 0;
+    text-align: center;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.form-container {
+    flex-basis: 45%;
+}
+
+.form-container form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-container label, .form-container textarea, .form-container input {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.form-container textarea {
+    width: 100%;
+    resize: vertical;
+}
+
+.form-container button {
+    background-color: #333;
+    color: #fff;
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+}
+
+.form-container button:hover {
+    background-color: #555;
+}
+
+.blogs-container {
+    flex-basis: 50%;
+}
+
+.blogs-container h2 {
+    margin-bottom: 10px;
+}
+
+.blogs-container .blog {
+    background-color: #fff;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.comments {
+    margin-top: 20px;
+}
+
+.comments ul {
+    list-style-type: none;
+}
+
+.comments li {
+    margin-bottom: 10px;
+}
+
+.comments button {
+    background-color: #dc3545;
+    color: #fff;
+    padding: 5px 8px;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.comments button:hover {
+    background-color: #c82333;
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Simple Blog</h1>
+      </header>
+
+      <div class="content">
+        <div class="form-container">
+          <form action="/blog/submit" method="post">
+            <label for="blogName">Blog Name:</label>
+            <input type="text" id="blogName" name="blogName" required />
+
+            <label for="authorName">Author Name:</label>
+            <input type="text" id="authorName" name="authorName" required />
+
+            <label for="description">Description:</label>
+            <textarea
+              id="description"
+              name="description"
+              rows="4"
+              required
+            ></textarea>
+
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+
+        <div class="blogs-container">
+          <h2>Blogs</h2>
+          <div id="blogs"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/javascripts/script.js"></script>
+  </body>
+</html>

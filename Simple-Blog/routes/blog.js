@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const path = require('path');  // Import the 'path' module
+const path = require('path');
 const { loadJSONFile, saveJSONFile } = require('../utils/fileUtils');
 
 // Load existing blogs and comments from the file

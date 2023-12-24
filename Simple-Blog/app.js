@@ -7,8 +7,9 @@ const blogRouter = require('./routes/blog');
 const app = express();
 const port = 3000;
 
+app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/blog', blogRouter);
