@@ -1,28 +1,72 @@
 <!-- views/login.ejs -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= title %></title>
-  <link rel="stylesheet" href="/stylesheets/style.css">
-  <link rel="stylesheet" href="/stylesheets/login.css"> <!-- Add a specific CSS file for login -->
-</head>
-<body>
-  <div class="container">
-    <h1><%= title %></h1>
-    <form action="/login" method="post">
-      <label for="username">Username:</label>
-      <input type="text" id="username" name="username" required>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/login.css" />
+    <!-- Add a specific CSS file for login -->
+    <style>
+      /* Add custom styles for the forgot password link */
+      #forgotPasswordLink {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 5px 10px;
+        background-color: #f0f0f0;
+        color: #333;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+      }
 
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" required>
+      #forgotPasswordLink:hover {
+        background-color: #e0e0e0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1><%= title %></h1>
+      <form action="/login" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required />
 
-      <button type="submit" class="login-btn">Log In</button> <!-- Add a class for the login button -->
-    </form>
-    
-    <em>Don't have an account? <a href="/signup" class="signup-link">Sign Up</a></em> <!-- Add a class for the signup link -->
-  </div>
-</body>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required />
+
+        <button type="submit" class="login-btn">Log In</button>
+        <!-- Add a class for the login button -->
+      </form>
+
+      <!-- Forgot Password link -->
+      <a href="#" id="forgotPasswordLink" onclick="showForgotPasswordForm()"
+        >Forgot Password?</a
+      >
+
+      <!-- Forgot Password form -->
+      <div id="forgotPasswordForm" style="display: none; margin-top: 10px">
+        <form action="/password/forgotpassword" method="post">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+
+      <em
+        >Don't have an account?
+        <a href="/signup" class="signup-link">Sign Up</a>
+      </em>
+      <!-- Add a class for the signup link -->
+    </div>
+
+    <script>
+      function showForgotPasswordForm() {
+        var form = document.getElementById("forgotPasswordForm");
+        form.style.display = "block";
+      }
+    </script>
+  </body>
 </html>
