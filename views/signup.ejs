@@ -12,6 +12,19 @@
 <body>
   <div class="container">
     <h1><%= title %></h1>
+
+    <% if (typeof message !== 'undefined' && message.length > 0) { %>
+      <div class="message-error">
+        <%= message %>
+      </div>
+    <% } %>
+
+    <% if (typeof success !== 'undefined' && success.length > 0) { %>
+      <div class="message-success">
+        <%= success %>
+      </div>
+    <% } %>
+
     <form action="/signup" method="post">
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" required>
