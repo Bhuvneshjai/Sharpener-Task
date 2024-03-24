@@ -4,6 +4,7 @@ const router = express.Router();
 const axios = require("axios");
 const SibApiV3Sdk = require("sib-api-v3-sdk");
 const dotenv = require("dotenv");
+const Swal = require('sweetalert2');
 
 dotenv.config();
 
@@ -32,27 +33,19 @@ router.post("/forgotpassword", async (req, res) => {
     sendSmtpEmail.subject = "Forgot Password";
     sendSmtpEmail.textContent = "Please click here to resend the link";
 
-    apiInstance.sendTransacEmail(sendSmtpEmail).then(
-      function (data) {
-        console.log("API called successfully. Returned data: " + data);
-        return res
-          .status(200)
-          .send("Reset password link has been sent to your email");
-      },
-      function (error) {
-        console.error("Error sending email:", error);
-        // Display error message using SweetAlert2
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "Failed to send reset password link!",
-        });
-        return res.status(500).send("Failed to send reset password link");
-      }
-    );
+    // Use async/await instead of promises for cleaner code
+    const data = await apiInstance.sendTransacEmail(sendSmtpEmail);
+    console.log("Email sent successfully:", data);
+    return res.status(200).send("Reset password link has been sent to your email");
   } catch (error) {
     console.error("Error sending email:", error);
-    return res.status(500).send("Internal Server Error");
+    // Display error message using SweetAlert2
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Failed to send reset password link!",
+    });
+    return res.status(500).send("Failed to send reset password link");
   }
 });
 

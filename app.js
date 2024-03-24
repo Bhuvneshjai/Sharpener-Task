@@ -11,7 +11,8 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/login');
 var signupRouter = require('./routes/signup');
-const forgotPasswordRouter = require('./routes/forgotpassword');
+const forgotPasswordRouter = require('./routes/forgotpassword'); // Corrected route path
+const userExpenseRouter = require('./routes/userexpense');
 
 var app = express();
 
@@ -47,6 +48,8 @@ app.use('/users', usersRouter);
 app.use('/login', loginRouter);
 app.use('/signup', signupRouter);
 app.use('/password', forgotPasswordRouter);
+app.use('/userexpense', userExpenseRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
